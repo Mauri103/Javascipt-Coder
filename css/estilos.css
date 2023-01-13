@@ -1,0 +1,45 @@
+.balance{
+    background-color: rgb(17, 17, 46);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.totales{
+    background-color: rgb(17, 17, 46);
+    color: white;
+}
+
+.tituloSaldos{
+ text-align: end;
+}
+
+.transacciones{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.balanceTotal{
+    color: white;
+}
+
+.columnaTransaccion input{
+    margin-left: 10px;
+}
+
+.contenedorTitulos{
+    margin-top: 50px;
+}
+
+input, select{
+    border: 2px solid grey; 
+    border-radius: 10px   
+    
+}
+
+.titulos{
+    text-align: center;
+    border: 2px solid grey;    
+    margin: 10px;
+   
+}
