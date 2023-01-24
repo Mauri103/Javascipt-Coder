@@ -3,26 +3,36 @@ totalIngresos = 0;
 totalEgresos = 0;
 
 let egresos = [];
-let ingresos = [];
+const ingresos = [];
+
 
 total = document.getElementById("balanceTotal").innerHTML = "$ 0"; 
 ingresos = document.getElementById("totalIngresos").innerHTML = "$ 0";
 egresos = document.getElementById("totalEgresos").innerHTML = "$ 0";
 
+function Ingreso(descripcion, valor){
+    this.descripcion = descripcion;
+    this.valor = valor;
+}
 
+function Egreso(descripcion, valor){
+    this.descripcion = descripcion;
+    this.valor = valor;
+}
 
 function realizarConteo(){
     event.preventDefault();
     var tipo = document.getElementById("tipoTransaccion").value;
     if(tipo === "Ingreso"){
         calcularIngresos();
-        console.log(totalBalance);
-        console.log(obtenerDescripcion());
-
+        ingreso = new Ingreso(obtenerDescripcion(), obtenerValorIngresado());
+        console.log(ingreso);
+        
+            
     }else{
         calcularEgresos();
-        console.log(totalBalance);
-        console.log(obtenerDescripcion());
+        egreso = new Egreso(obtenerDescripcion(), obtenerValorIngresado());
+        console.log(egreso);
     } 
     
 
@@ -52,6 +62,7 @@ function calcularEgresos(){
     totalEgresos = totalEgresos + egreso;
     totalBalance = totalBalance - egreso;
 }
+
 
 
     
