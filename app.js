@@ -7,8 +7,8 @@ const ingresos = [];
 
 
 total = document.getElementById("balanceTotal").innerHTML = "$ 0"; 
-ingresos = document.getElementById("totalIngresos").innerHTML = "$ 0";
-egresos = document.getElementById("totalEgresos").innerHTML = "$ 0";
+ingr = document.getElementById("totalIngresos").innerHTML = "$ 0";
+egr = document.getElementById("totalEgresos").innerHTML = "$ 0";
 
 function Ingreso(descripcion, valor){
     this.descripcion = descripcion;
@@ -26,31 +26,20 @@ function realizarConteo(){
     if(tipo === "Ingreso"){
         calcularIngresos();
         ingreso = new Ingreso(obtenerDescripcion(), obtenerValorIngresado());
-        console.log(ingreso);
-        
+        agregarIngreso();
+
             
     }else{
         calcularEgresos();
         egreso = new Egreso(obtenerDescripcion(), obtenerValorIngresado());
-        console.log(egreso);
+        agregarEgreso();
     } 
     
 
     total = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
-    ingresos = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
-    egresos = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
+    ingr = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
+    egr = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
 }
-
-function obtenerDescripcion(){
-    descripcion = document.getElementById("descripcionIngreso").value;
-    return descripcion;
-}
-
-function obtenerValorIngresado(){
-    valor = parseFloat(document.getElementById("valorIngresado").value);
-    return valor;
-}
-
 function calcularIngresos(){
     ingreso = obtenerValorIngresado();
     totalIngresos = totalIngresos + ingreso;
@@ -61,6 +50,25 @@ function calcularEgresos(){
     egreso = obtenerValorIngresado();
     totalEgresos = totalEgresos + egreso;
     totalBalance = totalBalance - egreso;
+}
+function obtenerValorIngresado(){
+    valor = parseFloat(document.getElementById("valorIngresado").value);
+    return valor;
+}
+
+function obtenerDescripcion(){
+    descripcion = document.getElementById("descripcionIngreso").value;
+    return descripcion;
+}
+
+function agregarIngreso(){
+    ingresos.push(ingreso);
+    console.log(ingresos);
+}
+
+function agregarEgreso(){
+    egresos.push(egreso);
+    console.log(egresos);
 }
 
 
