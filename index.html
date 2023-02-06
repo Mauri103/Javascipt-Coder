@@ -38,26 +38,26 @@
                         <option value="Egreso">-</option>
                     </select>
                     <input type="text" name="descripcionIngreso" id="descripcionIngreso" placeholder="Ingrese un concepto">
-                    <input type="number" name="valorIngresado" id="valorIngresado" placeholder="Ingrese un valor" required>
-                    <input type="submit" onclick="realizarConteo()" value="Ingresar">
+                    <input type="text" name="valorIngresado" id="valorIngresado" placeholder="Ingrese un valor" required>
+                    <input type="submit" id="ingresar" value="Ingresar">
                 </form>
             </div>
         </div>
     </div>
     <div class="container contenedorTitulos">
         <div class="row d-flex justify-content-center">
-            <div class="col-lg-5 titulos">
+            <div class="col-lg-4 titulos">
                 <h4>Ingresos</h4>
             </div>
-            <div class="col-lg-5 titulos">
+            <div class="col-lg-4 titulos">
                 <h4>Egresos</h4>
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6" id="descripcionIngresos"></div>
-            <div class="col-lg-6" id="descripcionEgresos"></div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-4" id="descripcionIngresos"></div>
+            <div class="col-lg-4" id="descripcionEgresos"></div>
         </div>
     </div>
 </body>

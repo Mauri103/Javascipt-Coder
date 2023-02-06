@@ -43,3 +43,13 @@ input, select{
     margin: 10px;
    
 }
+
+#descripcionIngresos{
+    display: flex;
+    justify-content: space-around;
+}
+
+#descripciónEgresos{
+    display: flex;
+    justify-content: space-around;
+}
