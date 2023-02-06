@@ -1,5 +1,5 @@
 totalBalance = 0;
-totalEgresos = 0;
+
 
 let egresos = [];
 let ingresos = [];
@@ -22,9 +22,7 @@ function realizarConteo(){
     if(tipo === "Ingreso"){
         calcularIngresos();
         ingreso = new Ingreso(obtenerDescripcion(), obtenerValorIngresado());
-        agregarIngreso();     
-
-            
+        agregarIngreso();                 
     }else{
         calcularEgresos();
         egreso = new Egreso(obtenerDescripcion(), obtenerValorIngresado());
@@ -43,11 +41,14 @@ function realizarConteo(){
 
 function calcularIngresos(){
     ingreso = obtenerValorIngresado();
+    totalBalance = totalBalance + ingreso;
 }
 
 function calcularEgresos(){
     egreso = obtenerValorIngresado();
+    totalBalance = totalBalance - egreso;
 }
+
 function obtenerValorIngresado(){
     valor = parseFloat(document.getElementById("valorIngresado").value);
     return valor;
@@ -60,12 +61,14 @@ function obtenerDescripcion(){
 
 function agregarIngreso(){
     ingresos.push(ingreso);
-    console.log(ingresos);
+    ingresosJSON = JSON.stringify(ingresos);
+    localStorage.setItem("ingresosStorage", ingresosJSON);
 }
 
 function agregarEgreso(){
     egresos.push(egreso);
-    console.log(egresos);
+    egresosJSON = JSON.stringify(egresos);
+    localStorage.setItem("egresosStorage", egresosJSON);
 }
 
 function restablecerValores(){
