@@ -12,13 +12,6 @@ setEgresos();
 balance = document.getElementById("balanceTotal").innerHTML = "$ 0"
 
 
-function rec(){
-    for (let i = 0; i < egresos.length; i++) {
-        console.log(egresos[i].descripcion);
-        console.log(egresos[i].value);
-    }
-}
-
 let aceptar = document.getElementById("ingresar");
 ingresar.addEventListener('click', realizarConteo);
 
