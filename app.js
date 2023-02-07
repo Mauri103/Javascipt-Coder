@@ -5,6 +5,16 @@ let totalBalance = 0;
 
 window.addEventListener("load", function(){
     localStorage.clear();
+    Swal.fire({
+        title: 'Bienvenido a la aplicación de gastos',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        },
+        confirmButtonText: '¡Gracias!'
+      })
 })
 
 setIngresos();
