@@ -1,11 +1,23 @@
-totalBalance = 0;
-
 let egresos = [];
 let ingresos = [];
+let totalBalance = 0;
 
-mostrarBalance()
+
+window.addEventListener("load", function(){
+    localStorage.clear();
+})
+
 setIngresos();
 setEgresos();
+balance = document.getElementById("balanceTotal").innerHTML = "$ 0"
+
+
+function rec(){
+    for (let i = 0; i < egresos.length; i++) {
+        console.log(egresos[i].descripcion);
+        console.log(egresos[i].value);
+    }
+}
 
 let aceptar = document.getElementById("ingresar");
 ingresar.addEventListener('click', realizarConteo);
@@ -21,6 +33,7 @@ function Egreso(descripcion, valor){
 }
 
 function realizarConteo(){
+    event.preventDefault();
     var tipo = document.getElementById("tipoTransaccion").value;
     if(tipo === "Ingreso"){
         calcularIngresos();
@@ -32,7 +45,7 @@ function realizarConteo(){
         agregarEgreso();
     } 
     
-    mostrarBalance()
+    balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
     mostrarIngresos();
     mostrarEgresos();    
 }
@@ -46,7 +59,6 @@ function setIngresos(){
         let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
         ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
     }
-    
 }
 
 function setEgresos(){
@@ -84,6 +96,7 @@ function agregarIngreso(){
     ingresos.push(ingreso);
     ingresosJSON = JSON.stringify(ingresos);
     localStorage.setItem("ingresosStorage", ingresosJSON);
+    
 }
 
 function agregarEgreso(){
@@ -94,30 +107,28 @@ function agregarEgreso(){
 
 function mostrarIngresos(){
     let ingrJSON = localStorage.getItem("ingresosStorage");
-    let ingr = JSON.parse(ingrJSON);
-    let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
-    ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
+    if(ingrJSON == null){
+        ingreso = document.getElementById("totalIngresos").innerHTML = "$ 0";
+    }else{
+        let ingr = JSON.parse(ingrJSON);
+        let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
+        ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
+    }
 }
 
 function mostrarEgresos(){
     let egrJSON = localStorage.getItem("egresosStorage");
-    let egr = JSON.parse(egrJSON);
-    let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
-    egreso = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
+    if (egrJSON == null){
+        egreso = document.getElementById("totalEgresos").innerHTML = "$ 0";
+    }else{
+        let egr = JSON.parse(egrJSON);
+        let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
+        egreso = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
+    }
 }
 
-function mostrarBalance(){
-    let egrJSON = localStorage.getItem("egresosStorage");
-    let egr = JSON.parse(egrJSON);
-    let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
-    let ingrJSON = localStorage.getItem("ingresosStorage");
-    let ingr = JSON.parse(ingrJSON);
-    let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
-    let totalBalance = totalIngresos - totalEgresos;
-    console.log(totalBalance);
-    balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
-}
 
+    
 
 
 
