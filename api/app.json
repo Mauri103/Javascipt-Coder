@@ -1,0 +1,14 @@
+{
+    "ingresos": [
+        {
+            "descripcion": "Sueldo",
+            "valor": 28900
+        }
+    ],
+    "egresos": [
+        {
+            "descripcion": "Alquiler",
+            "valor": 15000
+        }
+    ]
+}

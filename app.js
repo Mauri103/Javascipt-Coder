@@ -1,10 +1,12 @@
-let egresos = [];
-let ingresos = [];
-let totalBalance = 0;
+let egresos = JSON.parse(localStorage.getItem("egresosStorage")) || [];
+let ingresos = JSON.parse(localStorage.getItem("ingresosStorage")) || [];
+let valorIngreso= ingresos.reduce((contador, array) => contador + array.valor, 0);
+let valorEgreso = egresos.reduce((contador, array) => contador + array.valor, 0);
+let totalBalance = valorIngreso - valorEgreso;
 
 
-window.addEventListener("load", function(){
-    localStorage.clear();
+
+if(egresos.length == 0 && ingresos.length == 0){
     Swal.fire({
         title: 'Bienvenido a la aplicación de gastos',
         showClass: {
@@ -15,15 +17,15 @@ window.addEventListener("load", function(){
         },
         confirmButtonText: '¡Gracias!'
       })
-})
+}
 
 setIngresos();
 setEgresos();
-balance = document.getElementById("balanceTotal").innerHTML = "$ 0"
+balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
 
 
 let aceptar = document.getElementById("ingresar");
-ingresar.addEventListener('click', realizarConteo);
+aceptar.addEventListener('click', realizarConteo);
 
 function Ingreso(descripcion, valor){
     this.descripcion = descripcion;
