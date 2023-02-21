@@ -40,7 +40,9 @@ function realizarConteo(){
     if(tipo === "Ingreso"){
         calcularIngresos();
         ingreso = new Ingreso(obtenerDescripcion(), obtenerValorIngresado());
-        agregarIngreso();                 
+        agregarIngreso();  
+        
+               
     }else{
         calcularEgresos();
         egreso = new Egreso(obtenerDescripcion(), obtenerValorIngresado());
@@ -76,13 +78,15 @@ function agregarIngreso(){
     ingresos.push(ingreso);
     ingresosJSON = JSON.stringify(ingresos);
     localStorage.setItem("ingresosStorage", ingresosJSON);
-    
+    agregarIngresoApi(ingreso);
 }
 
 function agregarEgreso(){
     egresos.push(egreso);
     egresosJSON = JSON.stringify(egresos);
     localStorage.setItem("egresosStorage", egresosJSON);
+    agregarEgresoApi(egreso);
+
 }
 
 function mostrarIngresos(){
@@ -98,6 +102,14 @@ function mostrarEgresos(){
     let egr = JSON.parse(egrJSON);
     let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
     egreso = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
+}
+
+function agregarIngresoApi(ingreso){
+    console.log(ingreso);
+}
+
+function agregarEgresoApi(egreso){
+    console.log(egreso);
 }
 
 
