@@ -4,7 +4,9 @@ let valorIngreso= ingresos.reduce((contador, array) => contador + array.valor, 0
 let valorEgreso = egresos.reduce((contador, array) => contador + array.valor, 0);
 let totalBalance = valorIngreso - valorEgreso;
 
-
+ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + valorIngreso ;
+egreso = document.getElementById("totalEgresos").innerHTML = "$ " + valorEgreso;
+balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
 
 if(egresos.length == 0 && ingresos.length == 0){
     Swal.fire({
@@ -18,11 +20,6 @@ if(egresos.length == 0 && ingresos.length == 0){
         confirmButtonText: '¡Gracias!'
       })
 }
-
-setIngresos();
-setEgresos();
-balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
-
 
 let aceptar = document.getElementById("ingresar");
 aceptar.addEventListener('click', realizarConteo);
@@ -53,28 +50,6 @@ function realizarConteo(){
     balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
     mostrarIngresos();
     mostrarEgresos();    
-}
-
-function setIngresos(){
-    let ingrJSON = localStorage.getItem("ingresosStorage");
-    if(ingrJSON == null){
-        ingreso = document.getElementById("totalIngresos").innerHTML = "$ 0" ;
-    }else{
-        let ingr = JSON.parse(ingrJSON);
-        let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
-        ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
-    }
-}
-
-function setEgresos(){
-    let egrJSON = localStorage.getItem("egresosStorage");
-    if(egrJSON == null){
-        egreso = document.getElementById("totalEgresos").innerHTML = "$ 0" ;
-    }else{
-        let egr = JSON.parse(egrJSON);
-        let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
-        ingreso = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
-    }   
 }
 
 function calcularIngresos(){
@@ -112,25 +87,19 @@ function agregarEgreso(){
 
 function mostrarIngresos(){
     let ingrJSON = localStorage.getItem("ingresosStorage");
-    if(ingrJSON == null){
-        ingreso = document.getElementById("totalIngresos").innerHTML = "$ 0";
-    }else{
-        let ingr = JSON.parse(ingrJSON);
-        let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
-        ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
-    }
+    let ingr = JSON.parse(ingrJSON);
+    let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
+    ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
 }
+
 
 function mostrarEgresos(){
     let egrJSON = localStorage.getItem("egresosStorage");
-    if (egrJSON == null){
-        egreso = document.getElementById("totalEgresos").innerHTML = "$ 0";
-    }else{
-        let egr = JSON.parse(egrJSON);
-        let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
-        egreso = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
-    }
+    let egr = JSON.parse(egrJSON);
+    let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
+    egreso = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
 }
+
 
 
     
