@@ -44,12 +44,12 @@ input, select{
    
 }
 
-#descripcionIngresos{
+#descripcionIngresos p{
     display: flex;
     justify-content: space-around;
 }
 
-#descripciónEgresos{
+#descripcionEgresos p{
     display: flex;
     justify-content: space-around;
 }

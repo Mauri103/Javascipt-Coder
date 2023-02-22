@@ -6,7 +6,6 @@ let totalBalance = valorIngreso - valorEgreso;
 let idEgresoStorage = JSON.parse(localStorage.getItem("idEgreso") || 1);
 let idIngresoStorage = JSON.parse(localStorage.getItem("idIngreso") || 1);
 
-
 ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + valorIngreso ;
 egreso = document.getElementById("totalEgresos").innerHTML = "$ " + valorEgreso;
 balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
@@ -23,6 +22,8 @@ if(egresos.length == 0 && ingresos.length == 0){
         confirmButtonText: '¡Gracias!'
       })
 }
+
+
 
 let aceptar = document.getElementById("ingresar");
 aceptar.addEventListener('click', realizarConteo);
@@ -48,7 +49,7 @@ function realizarConteo(){
         idIngr ++;
         ingreso = new Ingreso(idIngr, obtenerDescripcion(), obtenerValorIngresado());
         let idIngresoStorage = localStorage.setItem("idIngreso", idIngr);
-        agregarIngreso();  
+        agregarIngreso();        
     }else{
         calcularEgresos();
         let idEgr = localStorage.getItem("idEgreso");
@@ -119,6 +120,25 @@ function mostrarEgresos(){
     }
 }
 
+if(ingresos != null){
+    tablaIngresos = document.getElementById("descripcionIngresos");
+    ingresos.forEach((item) => {
+        let Columna = document.createElement("p");
+        Columna.innerHTML = '<p value="' + item.id + '">' + item.descripcion + "</p><p>" + item.valor + "</p>" 
+        tablaIngresos.appendChild(Columna);
+        
+    });
+}
+
+if(egresos != null){
+    tablaEgresos = document.getElementById("descripcionEgresos");
+    egresos.forEach((item) => {
+        let Columna = document.createElement("p");
+        Columna.innerHTML = "<p>" + item.descripcion + "</p><p>" + item.valor + "</p>" 
+        tablaEgresos.appendChild(Columna);
+        
+    });
+}
 
 
 
