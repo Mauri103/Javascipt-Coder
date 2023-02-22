@@ -124,7 +124,7 @@ if(ingresos != null){
     tablaIngresos = document.getElementById("descripcionIngresos");
     ingresos.forEach((item) => {
         let Columna = document.createElement("p");
-        Columna.innerHTML = '<p value="' + item.id + '">' + item.descripcion + "</p><p>" + item.valor + "</p>" 
+        Columna.innerHTML = '<p value="' + item.id + '">' + item.descripcion + "</p><p>$ " + item.valor + "</p>" 
         tablaIngresos.appendChild(Columna);
         
     });
@@ -134,9 +134,9 @@ if(egresos != null){
     tablaEgresos = document.getElementById("descripcionEgresos");
     egresos.forEach((item) => {
         let Columna = document.createElement("p");
-        Columna.innerHTML = "<p>" + item.descripcion + "</p><p>" + item.valor + "</p>" 
+        Columna.innerHTML = "<p>" + item.descripcion + "</p><p>$ " + item.valor + "</p>" 
         tablaEgresos.appendChild(Columna);
-        
+
     });
 }
 

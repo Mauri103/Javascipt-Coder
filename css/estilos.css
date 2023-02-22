@@ -45,11 +45,15 @@ input, select{
 }
 
 #descripcionIngresos p{
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
+    text-align: center;
 }
 
 #descripcionEgresos p{
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
+    text-align: center;
 }
