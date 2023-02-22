@@ -3,6 +3,9 @@ let ingresos = JSON.parse(localStorage.getItem("ingresosStorage")) || [];
 let valorIngreso= ingresos.reduce((contador, array) => contador + array.valor, 0);
 let valorEgreso = egresos.reduce((contador, array) => contador + array.valor, 0);
 let totalBalance = valorIngreso - valorEgreso;
+let idEgresoStorage = JSON.parse(localStorage.getItem("idEgreso") || 1);
+let idIngresoStorage = JSON.parse(localStorage.getItem("idIngreso") || 1);
+
 
 ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + valorIngreso ;
 egreso = document.getElementById("totalEgresos").innerHTML = "$ " + valorEgreso;
@@ -24,12 +27,14 @@ if(egresos.length == 0 && ingresos.length == 0){
 let aceptar = document.getElementById("ingresar");
 aceptar.addEventListener('click', realizarConteo);
 
-function Ingreso(descripcion, valor){
+function Ingreso(id ,descripcion, valor){
+    this.id = id;
     this.descripcion = descripcion;
     this.valor = valor;
 }
 
-function Egreso(descripcion, valor){
+function Egreso(id, descripcion, valor){
+    this.id = id;
     this.descripcion = descripcion;
     this.valor = valor;
 }
@@ -39,13 +44,17 @@ function realizarConteo(){
     var tipo = document.getElementById("tipoTransaccion").value;
     if(tipo === "Ingreso"){
         calcularIngresos();
-        ingreso = new Ingreso(obtenerDescripcion(), obtenerValorIngresado());
+        let idIngr = localStorage.getItem("idIngreso");
+        idIngr ++;
+        ingreso = new Ingreso(idIngr, obtenerDescripcion(), obtenerValorIngresado());
+        let idIngresoStorage = localStorage.setItem("idIngreso", idIngr);
         agregarIngreso();  
-        
-               
     }else{
         calcularEgresos();
-        egreso = new Egreso(obtenerDescripcion(), obtenerValorIngresado());
+        let idEgr = localStorage.getItem("idEgreso");
+        idEgr ++;
+        egreso = new Egreso(idEgr, obtenerDescripcion(), obtenerValorIngresado());
+        let idEgresoStorage = localStorage.setItem("idEgreso", idEgr);
         agregarEgreso();
     } 
     
@@ -78,39 +87,42 @@ function agregarIngreso(){
     ingresos.push(ingreso);
     ingresosJSON = JSON.stringify(ingresos);
     localStorage.setItem("ingresosStorage", ingresosJSON);
-    agregarIngresoApi(ingreso);
 }
 
 function agregarEgreso(){
     egresos.push(egreso);
     egresosJSON = JSON.stringify(egresos);
     localStorage.setItem("egresosStorage", egresosJSON);
-    agregarEgresoApi(egreso);
 
 }
+
 
 function mostrarIngresos(){
     let ingrJSON = localStorage.getItem("ingresosStorage");
-    let ingr = JSON.parse(ingrJSON);
-    let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
-    ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
+    if(ingrJSON == null){
+        ingreso = document.getElementById("totalIngresos").innerHTML = "$ 0";
+    }else{
+        let ingr = JSON.parse(ingrJSON);
+        let totalIngresos = ingr.reduce((contador, array) => contador + array.valor, 0);
+        ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + totalIngresos;
+    }
 }
-
 
 function mostrarEgresos(){
     let egrJSON = localStorage.getItem("egresosStorage");
-    let egr = JSON.parse(egrJSON);
-    let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
-    egreso = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
+    if (egrJSON == null){
+        egreso = document.getElementById("totalEgresos").innerHTML = "$ 0";
+    }else{
+        let egr = JSON.parse(egrJSON);
+        let totalEgresos = egr.reduce((contador, array) => contador + array.valor, 0);
+        egreso = document.getElementById("totalEgresos").innerHTML = "$ " + totalEgresos;
+    }
 }
 
-function agregarIngresoApi(ingreso){
-    console.log(ingreso);
-}
 
-function agregarEgresoApi(egreso){
-    console.log(egreso);
-}
+
+
+
 
 
 
