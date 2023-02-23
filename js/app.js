@@ -159,7 +159,7 @@ function cargarIngresos() {
         let acciones = row.insertCell(2);
         descripcion.innerHTML = item.descripcion;
         valor.innerHTML = item.valor;
-        acciones.innerHTML = '<img id="deleteItem" onclick="eliminarIngreso(' + item.id + ')" src="/insumos/trash.png" alt="">'
+        acciones.innerHTML = '<img id="deleteItem" onclick="eliminarIngreso(' + item.id + ')" src="insumos/trash.png" alt="">'
     });
 }
 
@@ -177,7 +177,7 @@ function cargarEgresos() {
         let acciones = row.insertCell(2);
         descripcion.innerHTML = item.descripcion;
         valor.innerHTML = item.valor;
-        acciones.innerHTML = '<img id="deleteItem" onclick="eliminarEgreso(' + item.id + ')" src="/insumos/trash.png" alt="">'
+        acciones.innerHTML = '<img id="deleteItem" onclick="eliminarEgreso(' + item.id + ')" src="insumos/trash.png" alt="">'
     });
 }
 
