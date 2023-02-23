@@ -3,8 +3,9 @@ let ingresos = JSON.parse(localStorage.getItem("ingresosStorage")) || [];
 let valorIngreso = ingresos.reduce((contador, array) => contador + array.valor, 0);
 let valorEgreso = egresos.reduce((contador, array) => contador + array.valor, 0);
 let totalBalance = valorIngreso - valorEgreso;
-let idEgresoStorage = JSON.parse(localStorage.getItem("idEgreso") || 1);
-let idIngresoStorage = JSON.parse(localStorage.getItem("idIngreso") || 1);
+let idEgresoStorage = localStorage.getItem("idEgreso") || localStorage.setItem("idEgreso",2);
+let idIngresoStorage = localStorage.getItem("idIngreso") || localStorage.setItem("idIngreso",2);
+
 
 ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + valorIngreso;
 egreso = document.getElementById("totalEgresos").innerHTML = "$ " + valorEgreso;
@@ -69,8 +70,8 @@ function realizarConteo() {
     if (tipo === "Ingreso") {
         calcularIngresos();
         let idIngr = localStorage.getItem("idIngreso");
-        idIngr++;
         ingreso = new Ingreso(idIngr, obtenerDescripcion(), obtenerValorIngresado());
+        idIngr++;
         let idIngresoStorage = localStorage.setItem("idIngreso", idIngr);
         agregarIngreso();
         window.location.reload();
@@ -78,8 +79,8 @@ function realizarConteo() {
     } else {
         calcularEgresos();
         let idEgr = localStorage.getItem("idEgreso");
-        idEgr++;
         egreso = new Egreso(idEgr, obtenerDescripcion(), obtenerValorIngresado());
+        idEgr++;
         let idEgresoStorage = localStorage.setItem("idEgreso", idEgr);
         agregarEgreso();
         window.location.reload();
