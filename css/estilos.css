@@ -44,16 +44,82 @@ input, select{
    
 }
 
-#descripcionIngresos p{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
+
+img{
+    width: 20px;
+    height: 20px;
+    align-self: center;
+}
+
+#main{
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, 30%);
+    grid-template-areas: "ingreso egreso" "itemIngresos itemEgresos";
+    justify-content: center;
+    margin-top: 30px;
+    grid-column-gap: 20px;
+    grid-row-gap: 15px;
+}
+
+.ingreso{
+    grid-area: ingreso;
     text-align: center;
 }
 
-#descripcionEgresos p{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
+.egreso{
     text-align: center;
+    grid-area: egreso;
+}
+
+#itemsIngresos {
+    grid-area: itemIngresos;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#itemsIngresos td, #itemsIngresos th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+
+
+#itemsIngresos tr:hover {
+}
+
+#itemsIngresos th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #04AA6D;
+    color: white;
+}
+
+
+#itemsEgresos {
+    grid-area: itemEgresos;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  
+}
+
+#itemsEgresos td, #itemsEgresos th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+
+
+#itemsEgresos tr:hover {
+}
+
+#itemsEgresos th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #04AA6D;
+    color: white;
 }

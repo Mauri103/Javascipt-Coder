@@ -24,9 +24,13 @@ if(egresos.length == 0 && ingresos.length == 0){
 }
 
 
+function elim(id){
+    console.log(id);
+}
 
 let aceptar = document.getElementById("ingresar");
 aceptar.addEventListener('click', realizarConteo);
+
 
 function Ingreso(id ,descripcion, valor){
     this.id = id;
@@ -121,22 +125,30 @@ function mostrarEgresos(){
 }
 
 if(ingresos != null){
-    tablaIngresos = document.getElementById("descripcionIngresos");
     ingresos.forEach((item) => {
-        let Columna = document.createElement("p");
-        Columna.innerHTML = '<p value="' + item.id + '">' + item.descripcion + "</p><p>$ " + item.valor + "</p>" 
-        tablaIngresos.appendChild(Columna);
-        
+        let table = document.getElementById("itemsIngresos");        
+        let row = table.insertRow(1);
+        let descripcion = row.insertCell(0);
+        let valor = row.insertCell(1);
+        let acciones = row.insertCell(2);
+        descripcion.innerHTML = item.descripcion;
+        valor.innerHTML = item.valor;        
+        acciones.innerHTML = '<img id="deleteItem" onclick="elim(' + item.id + ')" src="/insumos/trash.png" alt="">'
     });
-}
+
+};
+
 
 if(egresos != null){
-    tablaEgresos = document.getElementById("descripcionEgresos");
-    egresos.forEach((item) => {
-        let Columna = document.createElement("p");
-        Columna.innerHTML = "<p>" + item.descripcion + "</p><p>$ " + item.valor + "</p>" 
-        tablaEgresos.appendChild(Columna);
-
+      ingresos.forEach((item) => {
+        let table = document.getElementById("itemsEgresos");        
+        let row = table.insertRow(1);
+        let descripcion = row.insertCell(0);
+        let valor = row.insertCell(1);
+        let acciones = row.insertCell(2);
+        descripcion.innerHTML = item.descripcion;
+        valor.innerHTML = item.valor;        
+        acciones.innerHTML = '<img id="deleteItem" onclick="elim(' + item.id + ')" src="/insumos/trash.png" alt="">'
     });
 }
 
