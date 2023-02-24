@@ -81,6 +81,16 @@ input, select{
     align-self: center;
 }
 
+#ingresar:hover{
+    transform: scale(1.10);
+    transition: all .5s ease;
+}
+
+#deleteItem:hover{
+    transform: scale(1.10);
+    transition: all .5s ease;
+}
+
 .titulos{
     text-align: center;
     border: 2px solid grey;    
@@ -133,6 +143,7 @@ img{
 
 #itemsIngresos tr:hover {
     background-color: rgba(230, 230, 230, 0.993);
+    transition: all .5s ease;
 }
 
 #itemsIngresos th {
@@ -165,7 +176,8 @@ tr{
 
 #itemsEgresos tr:hover {
     background-color: rgba(230, 230, 230, 0.993);
-
+    transition: all .5s ease;
+    
 }
 
 #itemsEgresos th {
