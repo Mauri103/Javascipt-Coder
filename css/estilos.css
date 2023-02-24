@@ -1,111 +1,119 @@
-html, .balance,.totales{
+html,
+.balance,
+.totales {
     font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-p{
+p {
     font-size: 18px;
 }
 
-.header{
-    background-color: rgba(17, 17, 46, 0.658);
+.header {
+    background-color: rgb(161, 159, 159);
     padding-bottom: 15px;
 
 }
 
 
 
-.balance{
+.balance {
     color: white;
     text-align: center;
     padding: 30px;
 }
 
-.total{
+.total {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
 
-.tituloSaldos{
- text-align: end;
- display: flex;
- width: 400px;
- height: 50px;
- align-items: center;
- justify-content: space-around;
+.tituloSaldos {
+    text-align: end;
+    display: flex;
+    width: 400px;
+    height: 50px;
+    align-items: center;
+    justify-content: space-around;
 }
 
-#form input, select{
+#form input,
+select {
     width: 200px;
     height: 50px;
 }
 
-.egresos{
- background-color: red;
+.egresos {
+    background-color: rgba(255, 0, 0, 0.719);
 }
 
-.ingresos{
-    background-color: rgb(10, 184, 10);
+.ingresos {
+    background-color: rgba(10, 184, 10, 0.726);
 }
 
-.transacciones{
+.transacciones {
     text-align: center;
     background-color: rgba(230, 230, 230, 0.993);
     padding: 20px;
 
 }
 
-.balanceTotal{
+.balanceTotal {
     color: white;
 }
 
-.columnaTransaccion input{
+.columnaTransaccion input {
     margin-left: 10px;
 }
 
-.contenedorTitulos{
+.contenedorTitulos {
     margin-top: 50px;
 }
 
-input, select{
-    border: 2px solid grey; 
-    border-radius: 10px   
-    
+input,
+select {
+    border: 2px solid grey;
+    border-radius: 10px;
 }
 
-#ingresar{
+input:focus, select:focus{
+    box-shadow: 0 0 20px grey;
+    transition: all .5s ease;
+}
+
+#ingresar {
     width: 35px;
-    height: 35px;    
+    height: 35px;
     margin-left: 20px;
     align-self: center;
 }
 
-#ingresar:hover{
+#ingresar:hover {
     transform: scale(1.10);
     transition: all .5s ease;
 }
 
-#deleteItem:hover{
+#deleteItem:hover {
     transform: scale(1.10);
     transition: all .5s ease;
 }
 
-.titulos{
+.titulos {
     text-align: center;
-    border: 2px solid grey;    
+    border: 2px solid grey;
     margin: 10px;
-   
+
 }
 
 
-img{
+img {
     width: 20px;
     height: 20px;
     align-self: center;
 }
 
-#main{
+#main {
     display: grid;
     grid-template-rows: repeat(2, auto);
     grid-template-columns: repeat(2, 30%);
@@ -115,12 +123,12 @@ img{
     grid-column-gap: 20px;
 }
 
-.ingreso{
+.ingreso {
     grid-area: ingreso;
     text-align: center;
 }
 
-.egreso{
+.egreso {
     text-align: center;
     grid-area: egreso;
 }
@@ -153,8 +161,9 @@ img{
     color: white;
 }
 
-tr{
-    height: 30px;
+td {
+    height: 15px;
+    align-self: flex-start;
 }
 
 
@@ -177,7 +186,7 @@ tr{
 #itemsEgresos tr:hover {
     background-color: rgba(230, 230, 230, 0.993);
     transition: all .5s ease;
-    
+
 }
 
 #itemsEgresos th {
