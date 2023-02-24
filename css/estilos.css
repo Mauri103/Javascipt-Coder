@@ -1,13 +1,12 @@
-html,
-.balance,
-.totales {
-    font-size: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+* {
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
 }
 
-p {
-    font-size: 18px;
-}
+
 
 .header {
     background-color: rgb(161, 159, 159);
@@ -21,6 +20,7 @@ p {
     color: white;
     text-align: center;
     padding: 30px;
+    padding-bottom: 10px;
 }
 
 .total {
@@ -35,7 +35,7 @@ p {
     width: 400px;
     height: 50px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 #form input,
@@ -46,10 +46,14 @@ select {
 
 .egresos {
     background-color: rgba(255, 0, 0, 0.719);
+    color: white;
+    padding: 15px;
 }
 
 .ingresos {
     background-color: rgba(10, 184, 10, 0.726);
+    color: white;
+    padding: 15px;
 }
 
 .transacciones {
@@ -77,7 +81,8 @@ select {
     border-radius: 10px;
 }
 
-input:focus, select:focus{
+input:focus,
+select:focus {
     box-shadow: 0 0 20px grey;
     transition: all .5s ease;
 }
@@ -126,11 +131,13 @@ img {
 .ingreso {
     grid-area: ingreso;
     text-align: center;
+    color: rgba(6, 129, 6, 0.596);
 }
 
 .egreso {
     text-align: center;
     grid-area: egreso;
+    color: rgba(161, 7, 7, 0.747);
 }
 
 #itemsIngresos {
@@ -141,7 +148,8 @@ img {
     margin-bottom: 50px;
 }
 
-#itemsIngresos td, #itemsIngresos th {
+#itemsIngresos td,
+#itemsIngresos th {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
@@ -175,7 +183,8 @@ td {
     margin-bottom: 50px;
 }
 
-#itemsEgresos td, #itemsEgresos th {
+#itemsEgresos td,
+#itemsEgresos th {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
