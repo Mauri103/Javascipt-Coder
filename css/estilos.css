@@ -1,22 +1,59 @@
+html, .balance,.totales{
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p{
+    font-size: 18px;
+}
+
+.header{
+    background-color: rgba(17, 17, 46, 0.658);
+    padding-bottom: 15px;
+
+}
+
+
+
 .balance{
-    background-color: rgb(17, 17, 46);
     color: white;
     text-align: center;
     padding: 30px;
 }
 
-.totales{
-    background-color: rgb(17, 17, 46);
-    color: white;
+.total{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .tituloSaldos{
  text-align: end;
+ display: flex;
+ width: 400px;
+ height: 50px;
+ align-items: center;
+ justify-content: space-around;
+}
+
+#form input, select{
+    width: 200px;
+    height: 50px;
+}
+
+.egresos{
+ background-color: red;
+}
+
+.ingresos{
+    background-color: rgb(10, 184, 10);
 }
 
 .transacciones{
-    margin-top: 50px;
     text-align: center;
+    background-color: rgba(230, 230, 230, 0.993);
+    padding: 20px;
+
 }
 
 .balanceTotal{
@@ -35,6 +72,13 @@ input, select{
     border: 2px solid grey; 
     border-radius: 10px   
     
+}
+
+#ingresar{
+    width: 35px;
+    height: 35px;    
+    margin-left: 20px;
+    align-self: center;
 }
 
 .titulos{
@@ -59,7 +103,6 @@ img{
     justify-content: center;
     margin-top: 30px;
     grid-column-gap: 20px;
-    grid-row-gap: 15px;
 }
 
 .ingreso{
@@ -77,6 +120,7 @@ img{
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-bottom: 50px;
 }
 
 #itemsIngresos td, #itemsIngresos th {
@@ -88,6 +132,7 @@ img{
 
 
 #itemsIngresos tr:hover {
+    background-color: rgba(230, 230, 230, 0.993);
 }
 
 #itemsIngresos th {
@@ -97,13 +142,17 @@ img{
     color: white;
 }
 
+tr{
+    height: 30px;
+}
+
 
 #itemsEgresos {
     grid-area: itemEgresos;
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  
+    margin-bottom: 50px;
 }
 
 #itemsEgresos td, #itemsEgresos th {
@@ -115,6 +164,8 @@ img{
 
 
 #itemsEgresos tr:hover {
+    background-color: rgba(230, 230, 230, 0.993);
+
 }
 
 #itemsEgresos th {

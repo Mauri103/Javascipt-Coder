@@ -1,14 +1,14 @@
 {
     "ingresos": [
         {
-            "id" : 1,
+            "id" : "0",
             "descripcion": "Sueldo",
             "valor": 28900
         }
     ],
     "egresos": [
         {
-            "id" : 1,
+            "id" : "0",
             "descripcion": "Alquiler",
             "valor": 15000
         }

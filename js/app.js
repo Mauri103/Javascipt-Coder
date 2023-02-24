@@ -3,15 +3,19 @@ let ingresos = JSON.parse(localStorage.getItem("ingresosStorage")) || [];
 let valorIngreso = ingresos.reduce((contador, array) => contador + array.valor, 0);
 let valorEgreso = egresos.reduce((contador, array) => contador + array.valor, 0);
 let totalBalance = valorIngreso - valorEgreso;
-let idEgresoStorage = localStorage.getItem("idEgreso") || localStorage.setItem("idEgreso",2);
-let idIngresoStorage = localStorage.getItem("idIngreso") || localStorage.setItem("idIngreso",2);
+let idEgresoStorage = localStorage.getItem("idEgreso") || localStorage.setItem("idEgreso", 1);
+let idIngresoStorage = localStorage.getItem("idIngreso") || localStorage.setItem("idIngreso", 1);
 
 
 ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + valorIngreso;
 egreso = document.getElementById("totalEgresos").innerHTML = "$ " + valorEgreso;
 balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
 
-function cargarHeader(){
+function cargarHeader() {
+    let valorIngreso = ingresos.reduce((contador, array) => contador + array.valor, 0);
+    let valorEgreso = egresos.reduce((contador, array) => contador + array.valor, 0);
+    let totalBalance = valorIngreso - valorEgreso;
+
     ingreso = document.getElementById("totalIngresos").innerHTML = "$ " + valorIngreso;
     egreso = document.getElementById("totalEgresos").innerHTML = "$ " + valorEgreso;
     balance = document.getElementById("balanceTotal").innerHTML = "$ " + totalBalance;
@@ -160,7 +164,7 @@ function cargarIngresos() {
         let acciones = row.insertCell(2);
         descripcion.innerHTML = item.descripcion;
         valor.innerHTML = item.valor;
-        acciones.innerHTML = '<img id="deleteItem" onclick="eliminarIngreso(' + item.id + ')" src="insumos/trash.png" alt="">'
+        acciones.innerHTML = '<img id="deleteItem" onclick="eliminarIngreso(' + item.id + ')" src="insumos/cruz.png" alt="">'
     });
 }
 
@@ -178,23 +182,28 @@ function cargarEgresos() {
         let acciones = row.insertCell(2);
         descripcion.innerHTML = item.descripcion;
         valor.innerHTML = item.valor;
-        acciones.innerHTML = '<img id="deleteItem" onclick="eliminarEgreso(' + item.id + ')" src="insumos/trash.png" alt="">'
+        acciones.innerHTML = '<img id="deleteItem" onclick="eliminarEgreso(' + item.id + ')" src="insumos/cruz.png" alt="">'
     });
+
 }
 
 function eliminarIngreso(id) {
-    let idEliminar = ingresos.filter((item) => item.id == id);
+    let idEliminar = ingresos.findIndex(ingreso => ingreso.id == id);
     ingresos.splice(idEliminar, 1);
     localStorage.setItem("ingresosStorage", JSON.stringify(ingresos));
     window.location.reload();
+
 }
 
 function eliminarEgreso(id) {
-    let idEliminar = egresos.filter((item) => item.id == id);
+    let idEliminar = egresos.findIndex(egreso => egreso.id == id);
     egresos.splice(idEliminar, 1);
     localStorage.setItem("egresosStorage", JSON.stringify(egresos));
     window.location.reload();
 }
+
+
+
 
 
 
